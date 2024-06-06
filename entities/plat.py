@@ -1,5 +1,5 @@
 from config.database import Base
-from sqlalchemy import Column, Integer, String, Float, Bool, ForeignKey
+from sqlalchemy import Column, Integer, String, Float, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
 
 
@@ -10,9 +10,9 @@ class Plat(Base):
     description = Column(String(50), nullable=False)
     allergene = Column(String(50), nullable=False)
     prix = Column(Float, nullable=False)
-    archive = Column(Bool, nullable=False)
+    archive = Column(Boolean, nullable=False)
 
     id_categorie = Column(
         Integer, ForeignKey("categories.id_categorie"), nullable=False
     )  # Sert à lier la carte à un restaurant
-    categorie = relationship("categories", back_populates="plat")
+    categorie = relationship("Categorie")
